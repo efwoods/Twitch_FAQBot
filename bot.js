@@ -28,38 +28,36 @@ function onMessageHandler (target, context, msg, self) {
 
   // Remove whitespace from chat message
   const commandName = msg.trim();
+////  
 
-  // SEND MESSAGE TO DEFINE INTENT
-/*
-var watson = require('watson-developer-cloud');
-
-var assistant = new watson.AssistantV1({
-  iam_apikey: '{apikey}',
-  version: '2018-09-20',
-  url: '{url}'
-});
-
-assistant.message({
-  workspace_id: '{workspace_id}',
-  input: {'text': 'Hello'}
-},  function(err, response) {
-  if (err)
-    console.log('error:', err);
-  else
-    console.log(JSON.stringify(response, null, 2));
-});
-*/
-// RETURN INTENT AND ANALYZE BELOW 
-  
-  
-  
+////
   // If the command is known, let's execute it
   if (commandName === '!dice') {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
   } else {
-    console.log(`* Unknown command ${commandName}`);
+      // SEND MESSAGE TO DEFINE INTENT
+var watson = require('watson-developer-cloud');
+
+var assistant = new watson.AssistantV1({
+  iam_apikey: 'J-FjvLvTCX3w4j1pNpbFfmBg1Tmf4kjpK32Vhj_PdmQi',
+  version: '2018-09-20',
+  url: 'https://gateway.watsonplatform.net/assistant/api'
+});
+
+assistant.message({
+  workspace_id: 'cebd2b40-c971-40ba-b28c-00dcdc8b328b',
+  input: {'text': msg}
+},  function(err, response) {
+  if (err)
+    console.log('error:', err);
+  else
+//    console.log(JSON.stringify(response, null, 2)
+    console.log(response.output.text[0]);
+    client.say(target, response.output.text[0]);	
+});
+  // RETURN INTENT AND ANALYZE BELOW 
   }
 }
 
