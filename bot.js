@@ -41,13 +41,15 @@ function onMessageHandler (target, context, msg, self) {
 var watson = require('watson-developer-cloud');
 
 var assistant = new watson.AssistantV1({
-  iam_apikey: 'J-FjvLvTCX3w4j1pNpbFfmBg1Tmf4kjpK32Vhj_PdmQi',
+  iam_apikey: 'BD8jSy5yuP5XhKCwJ4Min6uj6GrxPh_vhQhrT0YG-k0w',
+//  iam_apikey: 'J-FjvLvTCX3w4j1pNpbFfmBg1Tmf4kjpK32Vhj_PdmQi',
   version: '2018-09-20',
   url: 'https://gateway.watsonplatform.net/assistant/api'
 });
 
 assistant.message({
-  workspace_id: 'cebd2b40-c971-40ba-b28c-00dcdc8b328b',
+  workspace_id: 'cb2aa3d1-9628-4a2c-a952-2655fb7e0773',
+	//  workspace_id: 'cebd2b40-c971-40ba-b28c-00dcdc8b328b',
   input: {'text': msg}
 },  function(err, response) {
   if (err)
